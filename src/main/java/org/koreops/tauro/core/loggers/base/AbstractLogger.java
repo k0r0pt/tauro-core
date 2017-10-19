@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -128,6 +129,16 @@ abstract class AbstractLogger {
   }
 
   private synchronized void initFileLogging() {
+
+    String[] pathComponents = attackLogLocation.split(File.separator);
+    pathComponents = Arrays.copyOf(pathComponents, pathComponents.length - 1);
+    for (String pathComponent : pathComponents) {
+      File file = new File(pathComponent);
+      if (!file.exists()) {
+        file.mkdir();
+      }
+    }
+
     File file = new File(attackLogLocation);
     if (!file.exists()) {
       try {
