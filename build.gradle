@@ -1,0 +1,14 @@
+group 'org.k0r0pt'
+version '1.0-SNAPSHOT'
+
+apply from: 'build_config/tasks.gradle'
+apply from: 'dependencies.gradle'
+
+dependencies {
+    testCompile 'junit:junit:' + libraryVersions.junit
+    compile 'javax.mail:mail:' + libraryVersions.mail
+    testCompile 'org.powermock:powermock-core:' + libraryVersions.powermock
+    testCompile 'org.powermock:powermock-module-junit4:' + libraryVersions.powermock
+    testCompile 'org.powermock:powermock-api-mockito:' + libraryVersions.powermock
+    compile 'org.xerial:sqlite-jdbc:' + libraryVersions.sqliteJdbc
+}
