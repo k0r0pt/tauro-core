@@ -129,14 +129,10 @@ abstract class AbstractLogger {
   }
 
   private synchronized void initFileLogging() {
-
-    String[] pathComponents = attackLogLocation.split(File.separator);
-    pathComponents = Arrays.copyOf(pathComponents, pathComponents.length - 1);
-    for (String pathComponent : pathComponents) {
-      File file = new File(pathComponent);
-      if (!file.exists()) {
-        file.mkdir();
-      }
+    String path = attackLogLocation.substring(0, attackLogLocation.lastIndexOf(File.separator));
+    File dir = new File(path);
+    if (!dir.exists()) {
+      dir.mkdirs();
     }
 
     File file = new File(attackLogLocation);
