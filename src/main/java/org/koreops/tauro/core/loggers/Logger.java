@@ -17,18 +17,24 @@ package org.koreops.tauro.core.loggers;
 
 import org.koreops.tauro.core.loggers.base.BaseLogger;
 
+import java.io.File;
+
 /**
  * General Logging class.
  * This class has methods for printing both to stdout and log file: ~/h4X0r/logs/routerLog.log.
  *
- * @author Xtreme (k0r0pt) (sudipto.sarkar@visioplanet.org)
+ * @author Sudipto Sarkar (k0r0pt) (sudiptosarkar@visioplanet.org).
  */
 public class Logger {
 
   private static final BaseLogger logger;
 
   static {
-    logger = new BaseLogger(System.getProperty("tauro.core.logFile"));
+    String logLoc = System.getProperty("tauro.core.logFile");
+    String sep = File.separator;
+    String uhome = System.getProperty("user.home");
+    logLoc = logLoc != null ? logLoc : uhome + sep + ".h4X0r" + sep + "k0r0pt" + sep + "logs" + sep + "tauroAttackLog.log";
+    logger = new BaseLogger(logLoc);
   }
 
   public static synchronized void info(String info) {

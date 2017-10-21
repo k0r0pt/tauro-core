@@ -18,6 +18,7 @@ package org.koreops.tauro.core.db;
 import org.koreops.tauro.core.exceptions.DbDriverException;
 import org.koreops.tauro.core.loggers.Logger;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ import java.sql.SQLException;
 /**
  * This class acts as the Database connection Engine.
  *
- * @author Xtreme (k0r0pt) (sudipto.sarkar@visioplanet.org)
+ * @author Sudipto Sarkar (k0r0pt) (sudiptosarkar@visioplanet.org).
  */
 public class DbConnEngine {
 
@@ -33,7 +34,9 @@ public class DbConnEngine {
 
   static {
     String dbLoc = System.getProperty("tauro.core.db");
-    DB_LOCATION = dbLoc != null ? dbLoc : System.getProperty("user.home") + "/h4X0r/db/WirelessStations.sqlite";
+    String sep = File.separator;
+    String uhome = System.getProperty("user.home");
+    DB_LOCATION = dbLoc != null ? dbLoc : uhome + sep + ".h4X0r" + sep + "k0r0pt" + sep + "db" + sep + "WirelessStations.sqlite";
   }
 
   /**
