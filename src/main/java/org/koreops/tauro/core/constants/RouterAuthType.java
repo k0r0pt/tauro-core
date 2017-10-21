@@ -18,7 +18,7 @@ package org.koreops.tauro.core.constants;
 /**
  * Router Authentication Type enum.
  *
- * @author Sudipto Sarkar (sudipto.sarkar@autodesk.com).
+ * @author Sudipto Sarkar (k0r0pt) (sudiptosarkar@visioplanet.org).
  * @since 29 Sep, 2017 1:08 AM
  */
 public enum RouterAuthType {
