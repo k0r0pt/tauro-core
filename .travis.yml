@@ -22,3 +22,13 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+before_deploy:
+  - gradle generatePomFileForMavenPublication
+deploy:
+  branch: master
+  provider: bintray
+  skip_cleanup: true
+  file: .bintrayDescriptor.json
+  user: sudiptosarkar
+  key:
+    secure: lyQDbbXBPXBqAT7PXV2+cdh1OczrUjLDgeGqpfUHBN4ScyQCUVEvsmup8H07H2EepmzjLE0EWuxiiPn2cJfFEiX/G7zjfSWwZFT/W7H1B/grVNOORYUjAfgUNGcH4sVJqGvzvZ0KVRyZuZTQtXy/IZcnC1/YQjKFxseJkGoZFL+L6lnyh6RV7CHWXU23KZl72ol0DOus2JeYtKbyQNQ9odkbhq3zhvUzWtorHre3mAyih80/uSzOqQwL6X8SGr3xHtYE9lptXxzMnNH5a2FGjUSBZxwzJYgFZg4LIaIX/4EaWYuW/BuVTsTQrZjsMY9KzKYj3QPygANhv7X0bl2tMmTijVAZOLKG8Gzhgn77uGlCUMdoYFVnjYLRJqZjVwtqE7GzNOzLYQTifWv2W0Jv3WLrC/E5hXIcRmVeFf3ITwWkZrJba5cavqeKGLk4Xx3lkhB9zNCLAQ+8UlTNrEYTcmP4vBUszDkB6v4Io7ha8mD8h7XGIBJf5GYStuV915bsAbO3Yp3gFreDjWd7bT/QS1us/DmilAjaUyVsXJoWa5cC2vS679dbmcLrIJzdNxUJ4wo3sw75B+BdiaKAGT+ogsO0TMbiLGOlFJNOGOCeXPq8tbcshuMeMcUqM/rtLUqgx0TmgrMWSfZsyZAv80lshef5gsItmZFjT6RWLw99y3w=
