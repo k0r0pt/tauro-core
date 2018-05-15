@@ -31,12 +31,14 @@ import java.sql.SQLException;
 public class DbConnEngine {
 
   private static final String DB_LOCATION;
+  private static final DbConnEngine dbConnEngine;
 
   static {
     String dbLoc = System.getProperty("tauro.core.db");
     String sep = File.separator;
     String uhome = System.getProperty("user.home");
     DB_LOCATION = dbLoc != null ? dbLoc : uhome + sep + ".h4X0r" + sep + "k0r0pt" + sep + "db" + sep + "WirelessStations.sqlite";
+    dbConnEngine = new DbConnEngine();
   }
 
   /**
@@ -45,7 +47,11 @@ public class DbConnEngine {
    * @return The database connection
    */
   public static Connection getConnection() throws DbDriverException {
-    Connection connection = null;
+    return dbConnEngine.getDbConnection();
+  }
+
+  Connection getDbConnection() throws DbDriverException {
+    Connection connection;
     try {
       Class.forName("org.sqlite.JDBC");
       connection = DriverManager.getConnection("jdbc:sqlite:" + DB_LOCATION);
